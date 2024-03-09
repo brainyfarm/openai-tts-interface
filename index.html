@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenAI Speech Synthesizer</title>
+    <title>OpenAI Text-To-Speech Interface</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .loader {
@@ -28,14 +28,13 @@
     <div id="apiUrl" class="text-center text-sm mb-4">API URL: https://api.openai.com/v1/audio/speech</div>
     <div class="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
         <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="apiToken">API Token</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="apiToken">OPENAI API Token</label>
             <div class="flex">
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="apiToken" type="text" placeholder="Enter API Token">
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="apiToken" type="text" placeholder="Enter OPENAI API Token">
                 <button id="deleteToken" class="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                       </svg>
-                      
                 </button>
             </div>
         </div>
@@ -58,7 +57,7 @@
             <textarea id="textInput" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="4" placeholder="Enter text here..."></textarea>
         </div>
         <button id="generate" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
-            Generate <span id="loading" class="loader" style="display:none;"></span>
+            Create Audio <span id="loading" class="loader" style="display:none;"></span>
         </button>
         <p id="status" class="mt-4 text-center"></p>
         <div id="audioPlayerContainer" class="hidden">
