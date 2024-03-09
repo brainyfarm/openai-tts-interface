@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI Speech Synthesizer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 12px;
+            height: 12px;
+            animation: spin 2s linear infinite;
+            display: inline-block;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-blue-50 p-8">
+
+<div class="container mx-auto max-w-lg">
+    <h1 class="text-3xl font-bold text-center text-blue-800 mb-6">Speech Synthesizer</h1>
+    <div id="apiUrl" class="text-center text-sm mb-4">API URL: https://api.openai.com/v1/audio/speech</div>
+    <div class="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="apiToken">API Token</label>
+            <div class="flex">
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="apiToken" type="text" placeholder="Enter API Token">
+                <button id="deleteToken" class="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                      
+                </button>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="model" class="block text-gray-700 text-sm font-bold mb-2">Model:</label>
+            <select id="model" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></select>
+        </div>
+        <div class="mb-4">
+            <label for="voice" class="block text-gray-700 text-sm font-bold mb-2">Voice:</label>
+            <select id="voice" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></select>
+        </div>
+
+        <div class="mb-4">
+            <label for="outputFormat" class="block text-gray-700 text-sm font-bold mb-2">Output Format:</label>
+            <select id="outputFormat" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></select>
+        </div>
+
+        <div class="mb-4">
+            <label for="textInput" class="block text-gray-700 text-sm font-bold mb-2">Text Input:</label>
+            <textarea id="textInput" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="4" placeholder="Enter text here..."></textarea>
+        </div>
+        <button id="generate" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
+            Generate <span id="loading" class="loader" style="display:none;"></span>
+        </button>
+        <p id="status" class="mt-4 text-center"></p>
+        <div id="audioPlayerContainer" class="hidden">
+            <audio id="audioPlayer" controls class="w-full mt-4" autoplay></audio>
+        </div>
+        <div class="mt-4">
+            <button id="toggleList" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">Show/Hide Previously Transcribed</button>
+            <div id="transcribedList" class="hidden mt-4">
+                <h2 class="text-lg font-semibold">Previously Transcribed</h2>
+                <!-- Dynamically add transcribed items here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
